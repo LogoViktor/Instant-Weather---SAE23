@@ -1,0 +1,181 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Définit la police de caractères */
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Définit un dégradé de fond */
+    margin: 0; /* Supprime les marges */
+    padding: 0; /* Supprime les espaces intérieurs */
+    display: flex; /* Utilise la disposition flexbox */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    height: 100vh; /* Définit la hauteur de la page à 100% de la fenêtre */
+    color: #333; /* Définit la couleur du texte */
+}
+
+.container {
+    background: linear-gradient(135deg, #0277bd, #039be5); /* Définit un dégradé de fond */
+    color: #fff; /* Définit la couleur du texte en blanc */
+    padding: 20px; /* Ajoute un espace intérieur */
+    border-radius: 12px; /* Arrondit les coins */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ajoute une ombre */
+    text-align: center; /* Centre le texte */
+    width: 90%; /* Définit la largeur */
+    max-width: 500px; /* Définit la largeur maximale */
+}
+
+.header {
+    background: linear-gradient(135deg, #039be5, #0288d1); /* Définit un dégradé de fond */
+    padding: 10px; /* Ajoute un espace intérieur */
+    border-radius: 8px; /* Arrondit les coins */
+    font-size: 1.2em; /* Définit la taille de la police */
+    font-weight: bold; /* Met le texte en gras */
+    margin-bottom: 10px; /* Ajoute une marge en bas */
+}
+
+.weather-icon {
+    margin-top: 10px; /* Ajoute une marge en haut */
+}
+
+.weather-icon img {
+    width: 100px; /* Définit la largeur de l'image */
+    height: auto; /* Ajuste la hauteur automatiquement */
+}
+
+.temperature {
+    font-size: 1.5em; /* Définit la taille de la police */
+    margin: 10px 0; /* Ajoute une marge en haut et en bas */
+}
+
+.details {
+    background: linear-gradient(135deg, #80deea, #4dd0e1); /* Définit un dégradé de fond */
+    color: #0277bd; /* Définit la couleur du texte */
+    padding: 10px; /* Ajoute un espace intérieur */
+    border-radius: 8px; /* Arrondit les coins */
+    font-size: 1em; /* Définit la taille de la police */
+    margin-top: 10px; /* Ajoute une marge en haut */
+}
+
+form {
+    margin-bottom: 20px; /* Ajoute une marge en bas */
+}
+
+label {
+    display: block; /* Affiche l'élément en tant que bloc */
+    margin-bottom: 5px; /* Ajoute une marge en bas */
+    color: #e0f7fa; /* Définit la couleur du texte */
+    font-weight: bold; /* Met le texte en gras */
+}
+
+input {
+    padding: 10px; /* Ajoute un espace intérieur */
+    width: 100%; /* Définit la largeur */
+    box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur totale */
+    margin-bottom: 10px; /* Ajoute une marge en bas */
+    border: 1px solid #b2ebf2; /* Définit la bordure */
+    border-radius: 6px; /* Arrondit les coins */
+    font-size: 1em; /* Définit la taille de la police */
+    background-color: #e0f7fa; /* Définit la couleur de fond */
+}
+
+button {
+    padding: 12px 24px; /* Ajoute un espace intérieur */
+    background: linear-gradient(135deg, #039be5, #0288d1); /* Définit un dégradé de fond */
+    color: #fff; /* Définit la couleur du texte en blanc */
+    border: none; /* Supprime la bordure */
+    border-radius: 6px; /* Arrondit les coins */
+    cursor: pointer; /* Change le curseur en pointeur */
+    font-size: 1em; /* Définit la taille de la police */
+    transition: background-color 0.3s; /* Ajoute une transition pour le changement de couleur de fond */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0288d1, #039be5); /* Change le dégradé de fond au survol */
+}
+
+#citySelect {
+    margin-top: 20px; /* Ajoute une marge en haut */
+    padding: 10px; /* Ajoute un espace intérieur */
+    width: 100%; /* Définit la largeur */
+    box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur totale */
+    border: 1px solid #b2ebf2; /* Définit la bordure */
+    border-radius: 6px; /* Arrondit les coins */
+    font-size: 1em; /* Définit la taille de la police */
+    background-color: #e0f7fa; /* Définit la couleur de fond */
+}
+
+#currentDate {
+    margin-bottom: 20px; /* Ajoute une marge en bas */
+    font-size: 1.2em; /* Définit la taille de la police */
+    color: #e0f7fa; /* Définit la couleur du texte */
+    font-style: italic; /* Met le texte en italique */
+}
+
+#weatherInfo {
+    margin-top: 20px; /* Ajoute une marge en haut */
+    font-size: 1.1em; /* Définit la taille de la police */
+}
+
+/* Style spécifique pour le bouton "Rechercher" */
+#weatherForm button[type="submit"] {
+    background: linear-gradient(135deg, #976b6b, #4c9b50); /* Définit un dégradé de fond */
+    color: #fff; /* Définit la couleur du texte en blanc */
+}
+
+#weatherForm button[type="submit"]:hover {
+    background: linear-gradient(135deg, #4c9b50, #976b6b); /* Change le dégradé de fond au survol */
+
+/* Media Queries pour le responsive du site */
+
+/* Styles pour les écrans de largeur entre 426px et 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input, #citySelect {
+        font-size: 1em;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+}
+
+}
+
+
+/* Styles pour les écrans de largeur entre 769px et 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 80%;
+        padding: 25px;
+    }
+
+    input, #citySelect {
+        font-size: 1.1em;
+    }
+
+    button {
+        padding: 14px 28px;
+        font-size: 1.1em;
+    }
+}
+
+
+/* Styles pour les écrans de largeur minimale de 1025px */
+@media (min-width: 1025px) {
+    .container {
+        width: 70%;
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    input, #citySelect {
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 16px 32px;
+        font-size: 1.2em;
+    }
+}

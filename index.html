@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Weather</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Instant Weather</h1>
+        <div id="currentDate"></div> 
+        <form id="weatherForm">
+            <label for="postalCode">Code Postal :</label>
+            <input type="text" id="postalCode" name="postalCode" required>
+            <button type="submit">Rechercher</button>
+        </form>
+        <select id="citySelect" style="display:none;">
+            <option value="">--Sélectionnez une ville--</option>
+        </select>
+        <div id="weatherInfo"></div>
+    </div>
+    <script src="JAVA/recupinfoville.js"></script>
+    <script src="JAVA/recupinfometeo.js"></script>
+</body>
+</html>
