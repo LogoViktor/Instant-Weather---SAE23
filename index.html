@@ -4,21 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instant Weather</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     <div class="container">
         <h1>Instant Weather</h1>
-        <div id="currentDate"></div> 
-        <form id="weatherForm">
-            <label for="postalCode">Code Postal :</label>
-            <input type="text" id="postalCode" name="postalCode" required>
-            <button type="submit">Rechercher</button>
-        </form>
-        <select id="citySelect" style="display:none;">
-            <option value="">--Sélectionnez une ville--</option>
-        </select>
-        <div id="weatherInfo"></div>
+        <div id="currentDate"></div>
+        <div id="infoForm">
+            <form id="postalCodeForm">
+                <label for="postalCode">Code Postal :</label>
+                <input type="text" id="postalCode" name="postalCode" required>
+                <button type="submit">Rechercher</button>
+            </form>
+            <select id="citySelect" style="display:none;">
+                <option value="">--Sélectionnez une ville--</option>
+            </select>
+            <div id="weatherFormContainer" style="display:none;">
+                <form id="weatherForm">
+                    <div class="form-group">
+                        <label for="days">Nombre de jours pour les prévisions (1 à 7) :</label>
+                        <input type="range" id="days" name="days" min="1" max="7" value="1" required>
+                        <span id="daysValue">1 jour</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Informations supplémentaires à afficher :</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="latitude" name="latitude" checked>
+                                <label for="latitude">Latitude</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="longitude" name="longitude" checked>
+                                <label for="longitude">Longitude</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rain" name="rain" checked>
+                                <label for="rain">Cumul de pluie sur la journée en mm</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="windSpeed" name="windSpeed" checked>
+                                <label for="windSpeed">Vent moyen à 10 mètres en km/h</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="windDirection" name="windDirection" checked>
+                                <label for="windDirection">Direction du vent en degrés (0 à 360°)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="showForecast">Afficher les prévisions</button>
+                </form>
+            </div>
+        </div>
+        <div id="weatherDisplay" class="weather-display">
+            <select id="forecastSelect" style="display:none;">
+                <option value="">--Sélectionnez une date--</option>
+            </select>
+            <div id="weatherCards"></div>
+            <button id="refreshButton" style="display:none;">Retour à l'accueil</button>
+        </div>
     </div>
     <script src="JAVA/recupinfoville.js"></script>
     <script src="JAVA/recupinfometeo.js"></script>
