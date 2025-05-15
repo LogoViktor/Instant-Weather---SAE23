@@ -70,6 +70,7 @@ function afficherMétéo(données, days, latitude, longitude, rain, windSpeed, w
 
             const weatherCard = `
                 <div class="weather-card" id="weather-card-${selectedIndex}">
+                	<h2>Prévisions pour ${données.city.name}</h2>
                     <h3><p>Température minimale : ${prévision.tmin}°C</p>
                     <p>Température maximale : ${prévision.tmax}°C</p>
                     <p>Probabilité de pluie : ${prévision.probarain}%</p>
