@@ -44,9 +44,6 @@ function afficherMétéo(données, days, latitude, longitude, rain, windSpeed, w
     // Options pour formater la date en français
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-    // Initialise le contenu HTML de l'élément 'weatherDisplay'
-    let contenuHTML = `<h2>Prévisions pour ${données.city.name}</h2>`;
-
     // Remplit le menu déroulant avec les dates des prévisions
     forecastSelect.innerHTML = '<option value="">--Sélectionnez une date--</option>';
     prévisions.forEach((prévision, index) => {
