@@ -105,7 +105,7 @@ function applyBackground(probarain, sun_hours, cardId) {
         textColorClass = 'text-blanc';
     } else if (probarain > 40 && sun_hours <= 6) {
         backgroundImage = 'url("IMAGES/pluie.png")';
-        textColorClass = 'text-noir';
+        textColorClass = 'text-blanc';
     } else if (sun_hours > 10 && probarain <= 10) {
         backgroundImage = 'url("IMAGES/grandsoleil.png")';
         textColorClass = 'text-noir';
