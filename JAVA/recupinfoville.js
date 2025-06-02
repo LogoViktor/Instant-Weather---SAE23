@@ -24,13 +24,26 @@ document.getElementById('postalCodeForm').addEventListener('submit', function(ev
 function récupérerCommunes(codePostal) {
     // Effectue une requête fetch vers l'API pour obtenir les communes
     fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`)
-        .then(réponse => réponse.json()) // Convertit la réponse en JSON
+        .then(réponse => {
+            if (!réponse.ok) {
+                throw new Error('Aucune commune trouvée pour ce code postal.');
+            }
+            return réponse.json(); // Convertit la réponse en JSON
+        })
         .then(données => {
+            if (!données || données.length === 0) {
+                throw new Error('Aucune commune trouvée pour ce code postal.');
+            }
             afficherCommunes(données);
             // Affiche le formulaire de prévisions après avoir entré le code postal
             document.getElementById('weatherFormContainer').style.display = 'block';
         })
-        .catch(erreur => console.error('Erreur lors de la récupération des communes:', erreur)); // Gère les erreurs
+        .catch(erreur => {
+            console.error('Erreur lors de la récupération des communes:', erreur);
+            alert(erreur.message);
+            // Empêche l'affichage des options suivantes
+            document.getElementById('weatherFormContainer').style.display = 'none';
+        });
 }
 
 // Fonction pour afficher les communes dans une liste déroulante
