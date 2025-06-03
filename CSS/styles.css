@@ -2,12 +2,30 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(180deg, #80a6ed, #274170);
     margin: 0;
-    padding: 0;
+    padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    min-height: 100vh;
     color: #333;
+}
+
+#switch-language {
+    margin: 10px auto;
+    display: block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #976b6b, #4c9b50);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#switch-language:hover {
+    background: linear-gradient(135deg, #4c9b50, #976b6b);
 }
 
 .container {
@@ -19,6 +37,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
+    margin-top: 20px;
 }
 
 .header {
@@ -99,6 +118,7 @@ button {
 button:hover {
     background: linear-gradient(135deg, #4c9b50, #976b6b);
 }
+
 #refreshButton {
     display: block;
     margin: 20px auto;
@@ -169,6 +189,7 @@ button:hover {
     white-space: nowrap;
     border: 0;
 }
+
 /* Media Queries pour le responsive du site */
 @media (min-width: 426px) and (max-width: 768px) {
     .container {
