@@ -108,8 +108,8 @@ function afficherMétéo(données, days, latitude, longitude, rain, windSpeed, w
                         <p>${translations[document.documentElement.lang].rainProb} : ${prévision.probarain}%</p>
                         <p>${translations[document.documentElement.lang].sunHours} : ${prévision.sun_hours}</p>
                     </h3>
-                    ${latitude ? `<h3><p>${translations[document.documentElement.lang].latitude} : ${données.city.latitude}</p></h3>` : ''}
-                    ${longitude ? `<h3><p>${translations[document.documentElement.lang].longitude} : ${données.city.longitude}</p></h3>` : ''}
+                    ${latitude ? `<h3><p>Latitude : ${données.city.latitude}</p></h3>` : ''}
+                    ${longitude ? `<h3><p>Longitude : ${données.city.longitude}</p></h3>` : ''}
                     ${rain ? `<h3><p>${translations[document.documentElement.lang].rain} : ${prévision.rr10} mm</p></h3>` : ''}
                     ${windSpeed ? `<h3><p>${translations[document.documentElement.lang].avgWind} : ${prévision.wind10m} km/h</p></h3>` : ''}
                     ${windDirection ? `<h3><p>${translations[document.documentElement.lang].windDirection} : ${prévision.dirwind10m}°</p></h3>` : ''}
