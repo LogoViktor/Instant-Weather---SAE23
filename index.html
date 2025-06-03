@@ -3,69 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Weather</title>
+    <title data-key="title">Instant Weather</title>
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
+    <button id="switch-language">🇺🇸</button>
     <div class="container">
-        <h1>Instant Weather</h1>
+        <h1 data-key="instantWeather">Instant Weather</h1>
         <div id="currentDate"></div>
         <div id="infoForm">
             <form id="postalCodeForm">
-                <label for="postalCode">Code Postal :</label>
+                <label for="postalCode" data-key="postalCodeLabel">Code Postal :</label>
                 <input type="text" id="postalCode" name="postalCode" required>
-                <button type="submit">Rechercher</button>
+                <button type="submit" data-key="searchButton">Rechercher</button>
             </form>
-            <label for="forecastSelect" class="visually-hidden">Sélectionnez une date :</label>
+            <label for="forecastSelect" class="visually-hidden" data-key="selectDateLabel">Sélectionnez une date :</label>
             <select id="citySelect" style="display:none;">
-                <option value="">--Sélectionnez une ville--</option>
+                <option value="" data-key="selectCityOption">--Sélectionnez une ville--</option>
             </select>
             <div id="weatherFormContainer" style="display:none;">
                 <form id="weatherForm">
                     <div class="form-group">
-                        <label for="days">Nombre de jours pour les prévisions (1 à 7) :</label>
+                        <label for="days" data-key="daysLabel">Nombre de jours pour les prévisions (1 à 7) :</label>
                         <input type="range" id="days" name="days" min="1" max="7" value="1">
-                        <span id="daysValue">1 jour</span>
+                        <span id="daysValue" data-key="daysValue">1 jour</span>
                     </div>
                     <div class="form-group">
-                        <label>Informations supplémentaires à afficher :</label>
+                        <label data-key="additionalInfoLabel">Informations supplémentaires à afficher :</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="latitude" name="latitude">
-                                <label for="latitude">Latitude</label>
+                                <label for="latitude" data-key="latitudeLabel">Latitude</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="longitude" name="longitude">
-                                <label for="longitude">Longitude</label>
+                                <label for="longitude" data-key="longitudeLabel">Longitude</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="rain" name="rain">
-                                <label for="rain">Cumul de pluie sur la journée en mm</label>
+                                <label for="rain" data-key="rainLabel">Cumul de pluie sur la journée en mm</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="windSpeed" name="windSpeed">
-                                <label for="windSpeed">Vent moyen à 10 mètres en km/h</label>
+                                <label for="windSpeed" data-key="windSpeedLabel">Vent moyen à 10 mètres en km/h</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="windDirection" name="windDirection" >
-                                <label for="windDirection">Direction du vent en degrés (0 à 360°)</label>
+                                <input type="checkbox" id="windDirection" name="windDirection">
+                                <label for="windDirection" data-key="windDirectionLabel">Direction du vent en degrés (0 à 360°)</label>
                             </div>
                         </div>
                     </div>
-                    <button type="button" id="showForecast">Afficher les prévisions</button>
+                    <button type="button" id="showForecast" data-key="showForecastButton">Afficher les prévisions</button>
                 </form>
             </div>
         </div>
         <div id="weatherDisplay" class="weather-display">
-            <label for="citySelect" class="visually-hidden">Sélectionnez une ville :</label>
+            <label for="citySelect" class="visually-hidden" data-key="selectDateLabel">Sélectionnez une date :</label>
             <select id="forecastSelect" style="display:none;">
-                <option value="">--Sélectionnez une date--</option>
+                <option value="" data-key="selectDateOption">--Sélectionnez une date--</option>
             </select>
             <div id="weatherCards"></div>
-            <button id="refreshButton" style="display:none;">Retour à l'accueil</button>
+            <button id="refreshButton" style="display:none;" data-key="refreshButton">Retour à l'accueil</button>
         </div>
     </div>
     <script src="JAVA/recupinfoville.js"></script>
     <script src="JAVA/recupinfometeo.js"></script>
+    <script src="JAVA/traduction.js"></script>
 </body>
 </html>

@@ -1,94 +1,115 @@
+// Fonction pour convertir les températures en Fahrenheit
+function convertToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+// Fonction pour changer la langue
+function switchLanguage() {
+    const currentLang = document.documentElement.lang;
+    const newLang = currentLang === 'fr' ? 'en' : 'fr';
+    document.documentElement.lang = newLang;
+
+    // Mettre à jour les éléments de texte
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[newLang][key]) {
+            element.textContent = translations[newLang][key];
+        }
+    });
+
+    // Convertir les températures si on passe en anglais
+    if (newLang === 'en') {
+        convertTemperaturesToFahrenheit();
+    }
+}
+
+// Fonction pour convertir les températures affichées en Fahrenheit
+function convertTemperaturesToFahrenheit() {
+    const tempElements = document.querySelectorAll('.temperature');
+    tempElements.forEach(element => {
+        const tempInCelsius = parseFloat(element.textContent);
+        const tempInFahrenheit = convertToFahrenheit(tempInCelsius);
+        element.textContent = tempInFahrenheit.toFixed(1) + translations.en.fahrenheit;
+    });
+}
+
+// Ajoute un écouteur d'événement pour le bouton de changement de langue
+document.getElementById('switch-language').addEventListener('click', switchLanguage);
+
 // Fonction pour récupérer les données météorologiques d'une commune
 function récupérerMétéo(codeCommune, days, latitude, longitude, rain, windSpeed, windDirection) {
-    // Clé API pour accéder au service météorologique
     const cléAPI = 'fcb5f51c5214d3f6eb00a99b82c438fbd7cfefc58a44586c7e1e3af1db18ce79';
 
-    // Effectue une requête fetch vers l'API météo avec le code de la commune et la clé API
     fetch(`https://api.meteo-concept.com/api/forecast/daily?insee=${codeCommune}&token=${cléAPI}`)
         .then(réponse => {
-            // Vérifie si la réponse est OK
             if (!réponse.ok) {
-                throw new Error('Erreur réseau ou serveur');
+                throw new Error(translations[document.documentElement.lang].networkError);
             }
-            // Convertit la réponse en JSON
             return réponse.json();
         })
         .then(données => {
             afficherMétéo(données, days, latitude, longitude, rain, windSpeed, windDirection);
-            // Masquer le formulaire d'informations
             document.getElementById('infoForm').style.display = 'none';
-            // Afficher la section de la météo
             document.getElementById('weatherDisplay').style.display = 'block';
         })
         .catch(erreur => {
-            // Gère les erreurs en les affichant dans la console
-            console.error('Erreur lors de la récupération des données météo:', erreur);
-            // Affiche un message d'erreur dans l'élément avec l'ID 'weatherInfo'
-            document.getElementById('weatherInfo').textContent = 'Erreur lors de la récupération des données météo.';
+            console.error('Erreur:', erreur);
+            document.getElementById('weatherInfo').textContent = translations[document.documentElement.lang].weatherDataError;
         });
 }
 
 // Fonction pour afficher les données météorologiques
 function afficherMétéo(données, days, latitude, longitude, rain, windSpeed, windDirection) {
-    // Sélectionne l'élément avec l'ID 'weatherDisplay'
-    const weatherDisplay = document.getElementById('weatherDisplay');
     const forecastSelect = document.getElementById('forecastSelect');
     const weatherCards = document.getElementById('weatherCards');
-
-    // Récupère les prévisions météo pour les jours sélectionnés
     const prévisions = données.forecast.slice(0, days);
-
-    // Obtient la date actuelle
     const dateActuelle = new Date();
-
-    // Options pour formater la date en français
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-    // Remplit le menu déroulant avec les dates des prévisions
-    forecastSelect.innerHTML = '<option value="">--Sélectionnez une date--</option>';
+    forecastSelect.innerHTML = `<option value="">${translations[document.documentElement.lang].selectDate}</option>`;
     prévisions.forEach((prévision, index) => {
         const datePrévision = new Date(dateActuelle);
         datePrévision.setDate(dateActuelle.getDate() + index);
-        const datePrévisionFormatée = datePrévision.toLocaleDateString('fr-FR', options);
+        const datePrévisionFormatée = datePrévision.toLocaleDateString(document.documentElement.lang === 'fr' ? 'fr-FR' : 'en-US', options);
         forecastSelect.innerHTML += `<option value="${index}">${datePrévisionFormatée}</option>`;
     });
 
-    // Affiche le menu déroulant
     forecastSelect.style.display = 'block';
 
-    // Ajoute un écouteur d'événement pour détecter les changements dans le menu déroulant
     forecastSelect.addEventListener('change', function() {
         const selectedIndex = this.value;
         if (selectedIndex !== "") {
             const prévision = prévisions[selectedIndex];
             const datePrévision = new Date(dateActuelle);
             datePrévision.setDate(dateActuelle.getDate() + parseInt(selectedIndex));
-            const datePrévisionFormatée = datePrévision.toLocaleDateString('fr-FR', options);
+            const datePrévisionFormatée = datePrévision.toLocaleDateString(document.documentElement.lang === 'fr' ? 'fr-FR' : 'en-US', options);
+
+            const tempUnit = document.documentElement.lang === 'en' ? translations.en.fahrenheit : translations.fr.celsius;
+            const tmin = document.documentElement.lang === 'en' ? convertToFahrenheit(prévision.tmin).toFixed(1) : prévision.tmin;
+            const tmax = document.documentElement.lang === 'en' ? convertToFahrenheit(prévision.tmax).toFixed(1) : prévision.tmax;
 
             const weatherCard = `
                 <div class="weather-card" id="weather-card-${selectedIndex}">
-                	<h2>Prévisions pour ${données.city.name}</h2>
-                    <h3><p>Température minimale : ${prévision.tmin}°C</p>
-                    <p>Température maximale : ${prévision.tmax}°C</p>
-                    <p>Probabilité de pluie : ${prévision.probarain}%</p>
-                    <p>Heures d'ensoleillement : ${prévision.sun_hours} heures</p></h3>
-                    ${latitude ? `<h3><p>Latitude : ${données.city.latitude}</p></h3>` : ''}
-                    ${longitude ? `<h3><p>Longitude : ${données.city.longitude}</p></h3>` : ''}
-                    ${rain ? `<h3><p>Cumul de pluie : ${prévision.rr10} mm</p></h3>` : ''}
-                    ${windSpeed ? `<h3><p>Vent moyen : ${prévision.wind10m} km/h</p></h3>` : ''}
-                    ${windDirection ? `<h3><p>Direction du vent : ${prévision.dirwind10m}°</p></h3>` : ''}
+                    <h2>${translations[document.documentElement.lang].forecastFor} ${données.city.name}</h2>
+                    <h3>
+                        <p>${translations[document.documentElement.lang].minTemp} : ${tmin}${tempUnit}</p>
+                        <p>${translations[document.documentElement.lang].maxTemp} : ${tmax}${tempUnit}</p>
+                        <p>${translations[document.documentElement.lang].rainProb} : ${prévision.probarain}%</p>
+                        <p>${translations[document.documentElement.lang].sunHours} : ${prévision.sun_hours}</p>
+                    </h3>
+                    ${latitude ? `<h3><p>${translations[document.documentElement.lang].latitude} : ${données.city.latitude}</p></h3>` : ''}
+                    ${longitude ? `<h3><p>${translations[document.documentElement.lang].longitude} : ${données.city.longitude}</p></h3>` : ''}
+                    ${rain ? `<h3><p>${translations[document.documentElement.lang].rain} : ${prévision.rr10} mm</p></h3>` : ''}
+                    ${windSpeed ? `<h3><p>${translations[document.documentElement.lang].avgWind} : ${prévision.wind10m} km/h</p></h3>` : ''}
+                    ${windDirection ? `<h3><p>${translations[document.documentElement.lang].windDirection} : ${prévision.dirwind10m}°</p></h3>` : ''}
                 </div>
             `;
 
-            // Met à jour le contenu HTML de l'élément 'weatherCards' avec la carte météo sélectionnée
             weatherCards.innerHTML = weatherCard;
-
-            // Appliquer le fond en fonction de la probabilité de pluie et des heures d'ensoleillement
             applyBackground(prévision.probarain, prévision.sun_hours, selectedIndex);
         }
     });
 
-    // Affiche le bouton de rafraîchissement
     document.getElementById('refreshButton').style.display = 'block';
 }
 
@@ -96,7 +117,6 @@ function applyBackground(probarain, sun_hours, cardId) {
     let backgroundImage;
     let textColorClass;
 
-    // Déterminez l'image de fond en fonction de la probabilité de pluie et des heures d'ensoleillement
     if (probarain > 90 && sun_hours <= 2) {
         backgroundImage = 'url("IMAGES/grandepluie.png")';
         textColorClass = 'text-blanc';
@@ -125,27 +145,21 @@ function applyBackground(probarain, sun_hours, cardId) {
         backgroundImage = 'url("IMAGES/couvert.png")';
         textColorClass = 'text-blanc';
     }
+
     const weatherCard = document.getElementById(`weather-card-${cardId}`);
     weatherCard.style.backgroundImage = backgroundImage;
-
-    // Retirez toutes les classes de couleur existantes
     weatherCard.classList.remove('text-blanc', 'text-noir');
-
-    // Ajoutez la nouvelle classe de couleur
     weatherCard.classList.add(textColorClass);
 }
 
 document.getElementById('days').addEventListener('input', function() {
     const daysValue = document.getElementById('daysValue');
-    daysValue.textContent = this.value + ' jour' + (this.value > 1 ? 's' : '');
+    const days = parseInt(this.value);
+    daysValue.textContent = `${days} ${translations[document.documentElement.lang].days}${days > 1 ? translations[document.documentElement.lang].daysPlural : ''}`;
 });
 
-// Ajoute un écouteur d'événement pour détecter les clics sur le bouton "Afficher les prévisions"
 document.getElementById('showForecast').addEventListener('click', function() {
-    // Récupère le code de la ville sélectionnée
     const codeVilleSélectionnée = document.getElementById('citySelect').value;
-
-    // Récupère les valeurs des nouveaux champs du formulaire
     const days = parseInt(document.getElementById('days').value);
     const latitude = document.getElementById('latitude').checked;
     const longitude = document.getElementById('longitude').checked;
@@ -153,18 +167,13 @@ document.getElementById('showForecast').addEventListener('click', function() {
     const windSpeed = document.getElementById('windSpeed').checked;
     const windDirection = document.getElementById('windDirection').checked;
 
-    // Vérifie si une ville a été sélectionnée
     if (codeVilleSélectionnée) {
-        // Appelle la fonction pour récupérer la météo de la ville sélectionnée
         récupérerMétéo(codeVilleSélectionnée, days, latitude, longitude, rain, windSpeed, windDirection);
     } else {
-        // Affiche une alerte si aucune ville n'est sélectionnée
-        alert('Veuillez sélectionner une ville.');
+        alert(translations[document.documentElement.lang].selectCity);
     }
 });
 
-// Ajoute un écouteur d'événement pour le bouton de rafraîchissement
 document.getElementById('refreshButton').addEventListener('click', function() {
-    // Rafraîchit la page
     location.reload();
 });
