@@ -1,6 +1,6 @@
 // Fonction pour convertir les températures en Fahrenheit
 function convertToFahrenheit(celsius) {
-    return (celsius * 9/5) + 32;
+    return (celsius * 9 / 5) + 32;
 }
 
 // Fonction pour changer la langue
@@ -185,6 +185,9 @@ document.getElementById('showForecast').addEventListener('click', function() {
     const windDirection = document.getElementById('windDirection').checked;
 
     if (codeVilleSélectionnée) {
+        // Masquer le bouton de changement de langue
+        document.getElementById('switch-language').style.display = 'none';
+
         récupérerMétéo(codeVilleSélectionnée, days, latitude, longitude, rain, windSpeed, windDirection);
     } else {
         alert(translations[document.documentElement.lang].selectCity);
