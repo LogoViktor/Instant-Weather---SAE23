@@ -17,6 +17,17 @@ function switchLanguage() {
         }
     });
 
+    // Mettre à jour les options de sélection
+    const citySelect = document.getElementById('citySelect');
+    if (citySelect) {
+        citySelect.options[0].textContent = translations[newLang].selectCityOption;
+    }
+
+    const forecastSelect = document.getElementById('forecastSelect');
+    if (forecastSelect) {
+        forecastSelect.options[0].textContent = translations[newLang].selectDateOption;
+    }
+
     // Convertir les températures si on passe en anglais
     if (newLang === 'en') {
         convertTemperaturesToFahrenheit();
@@ -66,7 +77,7 @@ function afficherMétéo(données, days, latitude, longitude, rain, windSpeed, w
     const dateActuelle = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-    forecastSelect.innerHTML = `<option value="">${translations[document.documentElement.lang].selectDate}</option>`;
+    forecastSelect.innerHTML = `<option value="" data-key="selectDateOption">${translations[document.documentElement.lang].selectDateOption}</option>`;
     prévisions.forEach((prévision, index) => {
         const datePrévision = new Date(dateActuelle);
         datePrévision.setDate(dateActuelle.getDate() + index);
