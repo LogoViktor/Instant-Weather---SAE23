@@ -164,9 +164,15 @@ function applyBackground(probarain, sun_hours, cardId) {
 }
 
 document.getElementById('days').addEventListener('input', function() {
-    const daysValue = document.getElementById('daysValue');
+    const daysValueElement = document.getElementById('daysValue');
     const days = parseInt(this.value);
-    daysValue.textContent = `${days} ${translations[document.documentElement.lang].days}${days > 1 ? translations[document.documentElement.lang].daysPlural : ''}`;
+    const currentLang = document.documentElement.lang;
+
+    if (days === 1) {
+        daysValueElement.textContent = `${days} ${translations[currentLang].days}`;
+    } else {
+        daysValueElement.textContent = `${days} ${translations[currentLang].daysPlural}`;
+    }
 });
 
 document.getElementById('showForecast').addEventListener('click', function() {
