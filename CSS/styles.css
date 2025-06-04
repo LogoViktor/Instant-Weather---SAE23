@@ -1,3 +1,4 @@
+/* Style général du corps de la page */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(180deg, #80a6ed, #274170);
@@ -11,6 +12,7 @@ body {
     color: #333;
 }
 
+/* Style du bouton pour changer de langue */
 #switch-language {
     margin: 10px auto;
     display: block;
@@ -24,10 +26,12 @@ body {
     transition: background-color 0.3s;
 }
 
+/* Effet de survol pour le bouton de changement de langue */
 #switch-language:hover {
     background: linear-gradient(135deg, #4c9b50, #976b6b);
 }
 
+/* Style du conteneur principal */
 .container {
     background: linear-gradient(135deg, #0277bd, #039be5);
     color: #fff;
@@ -40,11 +44,13 @@ body {
     margin-top: 20px;
 }
 
+/* Style des groupes de formulaire */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
 
+/* Style des étiquettes */
 label {
     display: block;
     margin-bottom: 5px;
@@ -52,6 +58,7 @@ label {
     font-weight: bold;
 }
 
+/* Style des champs de texte et des listes déroulantes */
 input[type="text"], select {
     padding: 10px;
     width: 100%;
@@ -63,10 +70,12 @@ input[type="text"], select {
     background-color: #e0f7fa;
 }
 
+/* Style du groupe de cases à cocher */
 .checkbox-group {
     margin-top: 10px;
 }
 
+/* Style des éléments de case à cocher */
 .checkbox-item {
     display: flex;
     align-items: center;
@@ -77,6 +86,7 @@ input[type="text"], select {
     margin-right: 10px;
 }
 
+/* Style général des boutons */
 button {
     padding: 12px 24px;
     background: linear-gradient(135deg, #976b6b, #4c9b50);
@@ -88,10 +98,12 @@ button {
     transition: background-color 0.3s;
 }
 
+/* Effet de survol pour les boutons */
 button:hover {
     background: linear-gradient(135deg, #4c9b50, #976b6b);
 }
 
+/* Style du bouton de rafraîchissement */
 #refreshButton {
     display: block;
     margin: 20px auto;
@@ -100,6 +112,7 @@ button:hover {
     cursor: pointer;
 }
 
+/* Style de la liste déroulante pour la sélection de la ville */
 #citySelect {
     margin-top: 20px;
     padding: 10px;
@@ -111,6 +124,7 @@ button:hover {
     background-color: #e0f7fa;
 }
 
+/* Style de la date actuelle */
 #currentDate {
     margin-bottom: 20px;
     font-size: 1.2em;
@@ -118,20 +132,24 @@ button:hover {
     font-style: italic;
 }
 
+/* Style des informations météo */
 #weatherInfo {
     margin-top: 20px;
     font-size: 1.1em;
 }
 
+/* Style du bouton de soumission du formulaire de code postal */
 #postalCodeForm button[type="submit"] {
     background: linear-gradient(135deg, #976b6b, #4c9b50);
     color: #fff;
 }
 
+/* Effet de survol pour le bouton de soumission du formulaire de code postal */
 #postalCodeForm button[type="submit"]:hover {
     background: linear-gradient(135deg, #4c9b50, #976b6b);
 }
 
+/* Style de la carte météo */
 .weather-card {
     border-radius: 8px;
     padding: 16px;
@@ -139,18 +157,17 @@ button:hover {
     background-color: #333333;
 }
 
-.weather-card h3 {
-    margin-top: 0;
-}
-
+/* Style pour le texte blanc */
 .text-blanc {
     color: #ffffff;
 }
 
+/* Style pour le texte noir */
 .text-noir {
     color: #333333;
 }
 
+/* Style pour cacher visuellement un élément */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -165,6 +182,7 @@ button:hover {
 
 /* Media Queries pour le responsive du site */
 @media (min-width: 426px) and (max-width: 768px) {
+    /* Styles pour les tablettes */
     .container {
         width: 90%;
         padding: 20px;
@@ -181,6 +199,7 @@ button:hover {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+    /* Styles pour les petits écrans d'ordinateur */
     .container {
         width: 80%;
         padding: 25px;
@@ -197,6 +216,7 @@ button:hover {
 }
 
 @media (min-width: 1025px) {
+    /* Styles pour les grands écrans */
     .container {
         width: 70%;
         max-width: 600px;

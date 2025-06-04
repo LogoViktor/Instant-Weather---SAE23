@@ -7,30 +7,40 @@
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
+    <!-- Bouton pour changer la langue de l'application -->
     <button id="switch-language">🇫🇷 / 🇺🇸</button>
     <div class="container">
+        <!-- Titre principal de l'application -->
         <h1 data-key="instantWeather">Instant Weather</h1>
         <div id="currentDate"></div>
         <div id="infoForm">
+            <!-- Formulaire pour saisir le code postal -->
             <form id="postalCodeForm">
+                <!-- Champ pour le code postal -->
                 <label for="postalCode" data-key="postalCodeLabel">Code Postal :</label>
                 <input autocomplete="off" type="text" id="postalCode" name="postalCode" required>
+                <!-- Bouton pour soumettre le formulaire -->
                 <button type="submit" data-key="searchButton">Rechercher</button>
             </form>
+            <!-- Liste déroulante pour sélectionner une ville, initialement masquée -->
             <label for="forecastSelect" class="visually-hidden" data-key="selectDateOption">Sélectionnez une date :</label>
             <select id="citySelect" style="display:none;">
                 <option value="" data-key="selectCityOption">--Sélectionnez une ville--</option>
             </select>
+            <!-- Conteneur pour le formulaire des prévisions météo, initialement masqué -->
             <div id="weatherFormContainer" style="display:none;">
                 <form id="weatherForm">
+                    <!-- Groupe de formulaire pour sélectionner le nombre de jours de prévision -->
                     <div class="form-group">
                         <label for="days" data-key="daysLabel">Nombre de jours pour les prévisions (1 à 7) :</label>
                         <input autocomplete="off" type="range" id="days" name="days" min="1" max="7" value="1">
                         <span id="daysValue" data-key="daysValue">1 jour</span>
                     </div>
+                    <!-- Groupe de formulaire pour sélectionner des informations supplémentaires -->
                     <div class="form-group">
                         <label data-key="additionalInfoLabel">Informations supplémentaires à afficher :</label>
                         <div class="checkbox-group">
+                            <!-- Cases à cocher pour sélectionner des informations supplémentaires -->
                             <div class="checkbox-item">
                                 <input type="checkbox" id="latitude" name="latitude">
                                 <label for="latitude" data-key="latitudeLabel">Latitude</label>
@@ -53,19 +63,25 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Bouton pour afficher les prévisions météo -->
                     <button type="button" id="showForecast" data-key="showForecastButton">Afficher les prévisions</button>
                 </form>
             </div>
         </div>
+        <!-- Section pour afficher les prévisions météo -->
         <div id="weatherDisplay" class="weather-display">
+            <!-- Liste déroulante pour sélectionner une date de prévision, initialement masquée -->
             <label for="citySelect" class="visually-hidden" data-key="selectDateOption">Sélectionnez une date :</label>
             <select id="forecastSelect" style="display:none;">
                 <option value="" data-key="selectDateOption">--Sélectionnez une date--</option>
             </select>
+            <!-- Conteneur pour afficher les cartes météo -->
             <div id="weatherCards"></div>
+            <!-- Bouton pour rafraîchir la page, initialement masqué -->
             <button id="refreshButton" style="display:none;" data-key="refreshButton">Retour à l'accueil</button>
         </div>
     </div>
+    <!-- Scripts JavaScript pour les fonctionnalités de l'application -->
     <script src="JAVA/recupinfoville.js"></script>
     <script src="JAVA/recupinfometeo.js"></script>
     <script src="JAVA/traduction.js"></script>
