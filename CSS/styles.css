@@ -40,33 +40,6 @@ body {
     margin-top: 20px;
 }
 
-.header {
-    background: linear-gradient(135deg, #039be5, #0288d1);
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.weather-icon {
-    margin-top: 10px;
-}
-
-.weather-icon img {
-    width: 100px;
-    height: auto;
-}
-
-.temperature {
-    font-size: 1.5em;
-    margin: 10px 0;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
 .form-group {
     margin-bottom: 15px;
     text-align: left;
