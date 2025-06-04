@@ -14,7 +14,7 @@
         <div id="infoForm">
             <form id="postalCodeForm">
                 <label for="postalCode" data-key="postalCodeLabel">Code Postal :</label>
-                <input type="text" id="postalCode" name="postalCode" required>
+                <input autocomplete="off" type="text" id="postalCode" name="postalCode" required>
                 <button type="submit" data-key="searchButton">Rechercher</button>
             </form>
             <label for="forecastSelect" class="visually-hidden" data-key="selectDateOption">Sélectionnez une date :</label>
@@ -25,30 +25,30 @@
                 <form id="weatherForm">
                     <div class="form-group">
                         <label for="days" data-key="daysLabel">Nombre de jours pour les prévisions (1 à 7) :</label>
-                        <input type="range" id="days" name="days" min="1" max="7" value="1">
+                        <input autocomplete="off" type="range" id="days" name="days" min="1" max="7" value="1">
                         <span id="daysValue" data-key="daysValue">1 jour</span>
                     </div>
                     <div class="form-group">
                         <label data-key="additionalInfoLabel">Informations supplémentaires à afficher :</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="latitude" name="latitude">
+                                <input autocomplete="off" type="checkbox" id="latitude" name="latitude">
                                 <label for="latitude" data-key="latitudeLabel">Latitude</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="longitude" name="longitude">
+                                <input autocomplete="off" type="checkbox" id="longitude" name="longitude">
                                 <label for="longitude" data-key="longitudeLabel">Longitude</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="rain" name="rain">
+                                <input autocomplete="off" type="checkbox" id="rain" name="rain">
                                 <label for="rain" data-key="rainLabel">Cumul de pluie sur la journée en mm</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="windSpeed" name="windSpeed">
+                                <input autocomplete="off" type="checkbox" id="windSpeed" name="windSpeed">
                                 <label for="windSpeed" data-key="windSpeedLabel">Vent moyen à 10 mètres en km/h</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="windDirection" name="windDirection">
+                                <input autocomplete="off" type="checkbox" id="windDirection" name="windDirection">
                                 <label for="windDirection" data-key="windDirectionLabel">Direction du vent en degrés (0 à 360°)</label>
                             </div>
                         </div>
