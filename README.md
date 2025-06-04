@@ -2,9 +2,9 @@
 
 Instant Weather V2 est une application web qui permet aux utilisateurs d'obtenir des prévisions météorologiques détaillées pour une ville de leur choix en France. Ce projet est une amélioration de la version précédente (V1) et inclut de nouvelles fonctionnalités pour une expérience utilisateur enrichie.
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+
+
+
 
 ## Fonctionnalités :
 
@@ -45,6 +45,13 @@ Voici le lien d'accès pour la V1 faite en groupe précédemment :
 
 Le site Instant Weather V2 peut être utilisé entièrement au clavier.
 
+## Technologies utilisées
+
+- **HTML5** - ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)  
+- **CSS3** - ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)  
+- **JavaScript** - ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)  
+- **API Météo-Concept** - Données météorologiques
+- **API Geo Gouv** - Géolocalisation des communes françaises
 ## Contraintes et Normes :
 
 - Le projet est responsive et conforme aux validateurs HTML et CSS du W3C.
