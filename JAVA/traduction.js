@@ -36,7 +36,7 @@ const translations = {
     en: {
         title: "Instant Weather",
         instantWeather: "Instant Weather",
-        postalCodeLabel: "Zip Code:",
+        postalCodeLabel: "Zip Code :",
         searchButton: "Search",
         selectDateOption: "Select a date:",
         selectCityOption: "--Select a city--",
